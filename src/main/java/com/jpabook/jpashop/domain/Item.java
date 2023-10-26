@@ -25,8 +25,9 @@ import java.util.List;
 @Table(name = "ITEM")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 상속, 단일 테이블 전략
 @DiscriminatorColumn // DTYPE
-public class Item {
-    @Id @GeneratedValue
+public abstract class Item {
+    @Id
+    @GeneratedValue
     @Column(name = "ITEM_ID")
     private Long id;
     private String name;
@@ -35,6 +36,22 @@ public class Item {
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+    // 상품 주문 및 주문 취소 시 사용
+    public void addStock(int quantity) {
+        this.stockQuantity += quantity;
+    }
+
+    // 상품 주문 시 사용
+    public void removeStock(int quantity) {
+        int resetStock = this.stockQuantity - quantity;
+        if (resetStock < 0) {
+            // 예외처리 구간 실습으로 인한 console
+            System.out.println("need more stock");
+            return;
+        }
+        this.stockQuantity = resetStock;
+    }
 
     public Long getId() {
         return id;

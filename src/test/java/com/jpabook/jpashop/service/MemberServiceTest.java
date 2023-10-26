@@ -6,8 +6,12 @@ import org.assertj.core.api.Fail;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
@@ -17,11 +21,6 @@ class MemberServiceTest {
     MemberService memberService;
     @Autowired
     MemberRepository memberRepository;
-
-//    @BeforeEach
-//    void setUp() {
-//        memberService = new MemberService(memberRepository);
-//    }
 
     @Test
     @DisplayName("회원가입 테스트")
