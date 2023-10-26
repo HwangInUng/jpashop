@@ -2,6 +2,17 @@ package com.jpabook.jpashop.domain;
 
 import javax.persistence.*;
 
+/*SQL
+    create table order_item (
+       order_item_id int8 not null,
+        count int4 not null,
+        order_price int4 not null,
+        item_id int8,
+        order_id int8,
+        primary key (order_item_id)
+    )
+* */
+
 @Entity
 @Table(name = "ORDER_ITEM")
 public class OrderItem {

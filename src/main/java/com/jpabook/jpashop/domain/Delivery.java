@@ -2,6 +2,17 @@ package com.jpabook.jpashop.domain;
 
 import javax.persistence.*;
 
+/*SQL
+    create table delivery (
+       delivery_id int8 not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        status varchar(255),
+        primary key (delivery_id)
+    )
+* */
+
 @Entity
 @Table(name = "DELIVERY")
 public class Delivery {

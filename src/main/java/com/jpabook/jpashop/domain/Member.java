@@ -8,13 +8,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/*SQL
+    create table member (
+       member_id int8 not null,
+        city varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        created_date timestamp,
+        name varchar(255),
+        primary key (member_id)
+    )
+* */
+
 @Entity
 @Table(name = "MEMBER")
 public class Member {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String memberName;
     @Embedded
     private Address address;

@@ -4,10 +4,20 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/*SQL
+    create table category (
+       category_id int8 not null,
+        name varchar(255),
+        parent_id int8,
+        primary key (category_id)
+    )
+* */
+
 @Entity
 @Table(name = "CATEGORY")
 public class Category {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "CATEGORY_ID")
     private Long id;
     private String name;
@@ -18,8 +28,8 @@ public class Category {
 
     @OneToMany(mappedBy = "parent")
     private List<Category> childs = new ArrayList<>();
-    
-    
+
+
     // 다대다 관계는 실무에서는 많이 사용하지는 않음
     @ManyToMany
     @JoinTable( // 조인할 테이블을 매핑
@@ -28,6 +38,7 @@ public class Category {
             inverseJoinColumns = @JoinColumn(name = "item_id") // 반대의 보조 대상
     )
     private List<Item> items = new ArrayList<>();
+
     public Long getId() {
         return id;
     }

@@ -5,8 +5,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/*SQL
+    create table orders (
+       order_id int8 not null,
+        order_date date,
+        status varchar(255),
+        delivery_id int8,
+        member_id int8,
+        primary key (order_id)
+    )
+* */
+
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ORDERS")
 public class Order {
     @Id @GeneratedValue
     @Column(name = "ORDER_ID")
