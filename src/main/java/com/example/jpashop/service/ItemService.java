@@ -1,12 +1,11 @@
-package com.jpabook.jpashop.service;
+package com.example.jpashop.service;
 
-import com.jpabook.jpashop.domain.Item;
-import com.jpabook.jpashop.repository.ItemRepository;
+import com.example.jpashop.domain.Item;
+import com.example.jpashop.repository.ItemRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

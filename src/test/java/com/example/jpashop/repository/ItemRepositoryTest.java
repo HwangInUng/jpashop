@@ -1,15 +1,13 @@
-package com.jpabook.jpashop.repository;
+package com.example.jpashop.repository;
 
-import com.jpabook.jpashop.domain.Album;
-import com.jpabook.jpashop.domain.Item;
+import com.example.jpashop.domain.Album;
+import com.example.jpashop.domain.Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

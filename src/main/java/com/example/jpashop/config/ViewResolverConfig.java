@@ -1,4 +1,4 @@
-package com.jpabook.jpashop.config;
+package com.example.jpashop.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

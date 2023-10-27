@@ -1,6 +1,14 @@
-package com.jpabook.jpashop.domain;
+package com.example.jpashop.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /*SQL
     create table delivery (
@@ -16,7 +24,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "DELIVERY")
 public class Delivery {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "DELIVERY_ID")
     private Long id;
     @Embedded
@@ -49,7 +58,7 @@ public class Delivery {
     public Order getOrder() {
         return order;
     }
-    
+
     // 연관관계 편의 메소드
     public void setOrder(Order order) {
         this.order = order;

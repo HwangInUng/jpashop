@@ -1,9 +1,23 @@
-package com.jpabook.jpashop.domain;
+package com.example.jpashop.domain;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /*SQL
     create table orders (
@@ -19,7 +33,8 @@ import java.util.List;
 @Entity
 @Table(name = "ORDERS")
 public class Order {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "ORDER_ID")
     private Long id;
 
@@ -63,7 +78,7 @@ public class Order {
     public Member getMember() {
         return member;
     }
-    
+
     // 연관관계 편의 메소드
     public void setMember(Member member) {
         this.member = member;

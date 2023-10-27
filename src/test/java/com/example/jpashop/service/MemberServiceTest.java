@@ -1,8 +1,7 @@
-package com.jpabook.jpashop.service;
+package com.example.jpashop.service;
 
-import com.jpabook.jpashop.domain.Member;
-import com.jpabook.jpashop.repository.MemberRepository;
-import org.assertj.core.api.Fail;
+import com.example.jpashop.domain.Member;
+import com.example.jpashop.repository.MemberRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,12 +9,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
 
-@SpringBootTest
-@Transactional
+@ExtendWith(SpringExtension.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class MemberServiceTest {
     @Autowired
     MemberService memberService;
@@ -31,14 +29,13 @@ class MemberServiceTest {
 
         // When
         Long saveId = memberService.join(member);
-
         // Then
         Assertions.assertEquals(member, memberService.findOne(saveId));
     }
 
     @Test
     @DisplayName("중복 예외발생 테스트")
-    void duplicateMemberName() throws Exception{
+    void duplicateMemberName() throws Exception {
         // Given
         Member member1 = new Member();
         member1.setMemberName("test1");

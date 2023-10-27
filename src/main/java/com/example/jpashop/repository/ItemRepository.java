@@ -1,13 +1,10 @@
-package com.jpabook.jpashop.repository;
+package com.example.jpashop.repository;
 
-import com.jpabook.jpashop.domain.Item;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
-
+import com.example.jpashop.domain.Item;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class ItemRepository {

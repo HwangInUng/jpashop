@@ -1,4 +1,4 @@
-package com.jpabook.jpashop.domain;
+package com.example.jpashop.domain;
 
 import javax.persistence.Embeddable;
 

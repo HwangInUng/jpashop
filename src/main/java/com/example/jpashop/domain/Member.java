@@ -1,12 +1,18 @@
-package com.jpabook.jpashop.domain;
+package com.example.jpashop.domain;
 
-import lombok.Getter;
-import org.springframework.data.annotation.CreatedDate;
-
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.data.annotation.CreatedDate;
 
 /*SQL
     create table member (
@@ -23,7 +29,8 @@ import java.util.List;
 @Entity
 @Table(name = "MEMBER")
 public class Member {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
     @Column(name = "name", unique = true)
@@ -64,8 +71,8 @@ public class Member {
     public List<Order> getOrders() {
         return orders;
     }
-    
-    
+
+
     // 연관관계 편의 메소드
     public void addOrder(Order order) {
         this.orders.add(order);
