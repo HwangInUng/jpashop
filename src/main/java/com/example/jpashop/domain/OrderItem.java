@@ -39,6 +39,28 @@ public class OrderItem {
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 
+    // 주문 상품 생성
+    public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        // 재고 수량 조정
+        item.removeStock(count);
+        return orderItem;
+    }
+
+    // 주문 취소
+    public void cancel() {
+        getItem().addStock(count);
+    }
+
+    // 가격 조회
+    public int getTotalPrice() {
+        return getOrderPrice() * getCount();
+    }
+
     public Long getId() {
         return id;
     }

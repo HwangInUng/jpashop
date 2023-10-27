@@ -55,6 +55,42 @@ public class Order {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
+    // 주문 생성
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
+        for (OrderItem orderItem : orderItems) {
+            order.orderItems.add(orderItem);
+        }
+        // 주문 상태 입력
+        order.setStatus(OrderStatus.ORDER);
+        order.setOrderDate(new Date());
+        return order;
+    }
+
+    // 주문 취소
+    public void cancel() {
+        if (delivery.getStatus() == DeliveryStatus.COMP) {
+            throw new RuntimeException("배송이 완료된 상품은 취소가 불가능합니다.");
+        }
+
+        // 주문 상태 변경
+        this.setStatus(OrderStatus.CANCEL);
+        for (OrderItem orderItem : orderItems) {
+            orderItem.cancel();
+        }
+    }
+
+    // 주문 총 금액 조회
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (OrderItem orderItem : orderItems) {
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
+    }
+
     public Long getId() {
         return id;
     }
