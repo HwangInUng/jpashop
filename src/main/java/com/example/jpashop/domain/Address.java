@@ -1,12 +1,17 @@
 package com.example.jpashop.domain;
 
 import javax.persistence.Embeddable;
+import lombok.AllArgsConstructor;
 
 @Embeddable
+@AllArgsConstructor
 public class Address {
     private String city;
     private String street;
     private String zipcode;
+
+    public Address() {
+    }
 
     public String getCity() {
         return city;

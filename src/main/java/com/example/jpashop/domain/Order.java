@@ -136,6 +136,8 @@ public class Order {
 
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
-        delivery.setOrder(this);
+        if (delivery.getOrder() != null) {
+            delivery.setOrder(this);
+        }
     }
 }

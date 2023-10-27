@@ -5,6 +5,7 @@ import com.example.jpashop.domain.Item;
 import com.example.jpashop.domain.Member;
 import com.example.jpashop.domain.Order;
 import com.example.jpashop.domain.OrderItem;
+import com.example.jpashop.domain.OrderSearch;
 import com.example.jpashop.repository.ItemRepository;
 import com.example.jpashop.repository.MemberRepository;
 import com.example.jpashop.repository.OrderRepository;
@@ -41,7 +42,7 @@ public class OrderService {
     }
 
     // 나중에 구현
-    public List<Order> findOrders() {
-        return null;
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAll(orderSearch);
     }
 }
