@@ -1,35 +1,14 @@
 package com.example.jpashop.repository;
 
-import com.example.jpashop.domain.Member;
 import com.example.jpashop.domain.Order;
-import com.example.jpashop.domain.OrderSearch;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 
 @Repository
-public class OrderRepository {
-    @PersistenceContext
-    EntityManager entityManager;
+public interface OrderRepository extends JpaRepository<Order, Long>, JpaSpecificationExecutor<Order> {
 
-    public void save(Order order) {
-        entityManager.persist(order);
-    }
-
-    public Order findOne(Long id) {
-        return entityManager.find(Order.class, id);
-    }
-
+    /* EntityManager 사용 코드
     public List<Order> findAll(OrderSearch orderSearch) {
         // 쿼리 API 사용
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
@@ -59,4 +38,5 @@ public class OrderRepository {
 
         return query.getResultList();
     }
+    */
 }

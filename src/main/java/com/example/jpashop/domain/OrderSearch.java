@@ -1,9 +1,15 @@
 package com.example.jpashop.domain;
 
+import org.springframework.data.jpa.domain.Specification;
+
 public class OrderSearch {
     private String memberName;
     private OrderStatus orderStatus;
 
+    public Specification<Order> toSpecification() {
+        return OrderSpec.memberNameLike(memberName)
+                .and(OrderSpec.orderStatusEq(orderStatus));
+    }
 
     public String getMemberName() {
         return memberName;
